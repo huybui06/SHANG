@@ -71,14 +71,18 @@
       background: url('https://i.imgur.com/5fKXz3b.png') no-repeat center center;
       background-size: contain;
       animation: fall linear infinite;
+      /* Đặt kích thước mặc định, còn JS sẽ override width/height nếu muốn */
+      width: 30px;
+      height: 30px;
     }
     @keyframes fall {
       0% {
-        transform: translateY(0) rotate(0deg);
+        transform: translate(0, 0) rotate(0deg);
         opacity: 1;
       }
       100% {
-        transform: translateY(110vh) rotate(360deg);
+        /* trôi ngang: var(--horizontal-drift), rơi dọc 110vh, xoay 720 độ */
+        transform: translate(var(--horizontal-drift, 0), 110vh) rotate(720deg);
         opacity: 0.5;
       }
     }
@@ -334,7 +338,6 @@
         <div class="left-div left-des">
           <!-- Địa điểm -->
           <div class="left-div-item">
-            <!-- Icon Location -->
             <svg viewBox="0 0 1024 1024">
               <path d="M512 249.976471c-99.388235 0-180.705882 81.317647-180.705882 180.705882s81.317647 180.705882 
                        180.705882 180.705882 180.705882-81.317647 180.705882-180.705882-81.317647-180.705882-180.705882-180.705882z 
@@ -351,9 +354,7 @@
             </svg>
             Ha Noi, VietNam 🇻🇳
           </div>
-          <!-- Single -->
           <div class="left-div-item">
-            <!-- Icon Heart -->
             <svg fill="#ffffff" viewBox="0 0 471.701 471.701">
               <path d="M433.601,67.001c-24.7-24.7-57.4-38.2-92.3-38.2s-67.7,13.6-92.4,38.3l-12.9,12.9l-13.1-13.1 
                        c-24.7-24.7-57.6-38.4-92.5-38.4c-34.8,0-67.6,13.6-92.2,38.2c-24.7,24.7-38.3,57.5-38.2,92.4
@@ -367,9 +368,7 @@
             </svg>
             Single 💤
           </div>
-          <!-- Followers -->
           <div class="left-div-item">
-            <!-- Icon Wifi (biểu tượng sóng) -->
             <svg viewBox="0 0 14 14" fill="#ffffff">
               <path d="M287,3494.02134 L287,3496 L288.992883,3496 
                        C288.992883,3494.90679 288.101068,3494.02134 287,3494.02134 
@@ -388,9 +387,7 @@
             </svg>
             12,553 followers
           </div>
-          <!-- Phone -->
           <div class="left-div-item">
-            <!-- Icon Phone -->
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M7.978 4a2.553 2.553 0 0 0-1.926.877
                        C4.233 6.7 3.699 8.751 4.153 10.814
@@ -490,8 +487,7 @@
                 0-2.09 1.984-2.847 3.55-2.847.586 
                 0 1.294.04 1.663.114 0-.637-.54-1.728-1.9-1.728-1.25 
                 0-1.566.405-1.967.868ZM8.716 
-                8.19c-2.04 0-2.304.87-2.304 
-                1.416 0 .878 1.043 1.168 1.6 
+                8.19c-2.04 0-2.304.87-2.304 1.416 0 .878 1.043 1.168 1.6 
                 1.168 1.02 0 2.067-.282 
                 2.232-2.423a6.2 6.2 0 0 
                 0-1.528-.161"/>
@@ -521,7 +517,7 @@
           </a>
         </div>
 
-        <!-- Snake Light (trò chơi) khôi phục -->
+        <!-- Snake Light (trò chơi) -->
         <div class="hiv">
           <img id="hiv" src="https://ying8z.github.io/YING/static/img/svg/snake-Light.svg" alt="Snake Light">
         </div>
@@ -614,19 +610,19 @@
     var audio = document.getElementById("music");
     // Tùy chỉnh auto-play...
 
-    // ===== Tạo hiệu ứng hoa anh đào rơi liên tục =====
+    // ===== Tạo hiệu ứng hoa anh đào rơi liên tục (có trôi ngang) =====
     const cherryContainer = document.createElement('div');
     cherryContainer.classList.add('cherry-container');
     document.body.appendChild(cherryContainer);
 
     const cherryCount = 30; // Số lượng hoa
-    for (let i = 0; i < cherryCount; i++){
+    for (let i = 0; i < cherryCount; i++) {
       const cherry = document.createElement('div');
       cherry.classList.add('cherry');
 
       // Vị trí ngang ngẫu nhiên
       cherry.style.left = (Math.random() * 100) + '%';
-      // Thời gian animation ngẫu nhiên từ 5 -> 15s
+      // Thời gian animation ngẫu nhiên 5 -> 15s
       cherry.style.animationDuration = (5 + Math.random() * 10) + 's';
       // Độ trễ ngẫu nhiên 0 -> 15s
       cherry.style.animationDelay = (Math.random() * 15) + 's';
@@ -634,6 +630,10 @@
       const size = 20 + Math.random() * 30;
       cherry.style.width = size + 'px';
       cherry.style.height = size + 'px';
+
+      // Thêm trôi ngang: -150 -> +150 px
+      const horizontalDrift = (Math.random() - 0.5) * 300; 
+      cherry.style.setProperty('--horizontal-drift', horizontalDrift + 'px');
 
       cherryContainer.appendChild(cherry);
     }
