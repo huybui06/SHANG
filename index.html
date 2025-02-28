@@ -45,25 +45,18 @@
       top: 0; left: 0;
       width: 100%; height: 100%;
       pointer-events: none;
-      z-index: 10000; /* nằm trên tất cả */
+      z-index: 10000;
     }
     .cherry {
       position: absolute;
       top: -50px;
-      /* Dùng ảnh hoa đào từ Pixabay (nếu cần bạn có thể thay bằng file cục bộ) */
       background: url('https://cdn.pixabay.com/photo/2017/03/07/14/00/cherry-blossom-2124621_1280.png') no-repeat center center;
       background-size: contain;
       animation: fall linear infinite;
     }
     @keyframes fall {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(110vh) rotate(720deg);
-        opacity: 0.5;
-      }
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0.5; }
     }
     
     /* =============== MAIN LAYOUT =============== */
@@ -94,8 +87,7 @@
     }
     .logo img {
       position: absolute;
-      top: -15%;
-      left: -10%;
+      top: -15%; left: -10%;
       width: 120%;
       aspect-ratio: 1/1;
     }
@@ -241,7 +233,7 @@
     .projectItemLeft h1 { font-size: 1rem; margin-bottom: 4px; }
     .projectItemLeft p { font-size: 0.9rem; color: #ddd; }
     
-    /* Footer */
+    /* FOOTER */
     footer {
       text-align: center;
       font-size: 0.9rem;
@@ -431,6 +423,11 @@
             <div class="iconTip">Github</div>
           </a>
         </div>
+
+        <!-- Phần trò chơi (Snake Light) -->
+        <div class="hiv">
+          <img id="hiv" src="https://ying8z.github.io/YING/static/img/svg/snake-Light.svg" alt="Snake Light">
+        </div>
       </header>
 
       <content>
@@ -498,7 +495,7 @@
     SHANG © 2025 | <a>All Rights Reserved</a>
   </footer>
 
-  <!-- Toast & TC -->
+  <!-- Toast & TC (nếu cần) -->
   <div class="tc">
     <div onclick="" class="tc-main">
       <img class="tc-img" src="" alt="">
@@ -518,13 +515,14 @@
     }, 2000);
 
     var audio = document.getElementById("music");
+    // Tùy chỉnh auto-play nếu cần...
 
-    // ===== Tạo hiệu ứng hoa đào rơi =====
+    // ===== Tạo hiệu ứng hoa anh đào rơi =====
     const cherryContainer = document.createElement('div');
     cherryContainer.classList.add('cherry-container');
     document.body.appendChild(cherryContainer);
 
-    const cherryCount = 30; // Số lượng hoa
+    const cherryCount = 30; // Số lượng hoa rơi
     for (let i = 0; i < cherryCount; i++){
       const cherry = document.createElement('div');
       cherry.classList.add('cherry');
