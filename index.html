@@ -3,17 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Profile SHANG &gt;.&lt;</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="A bad boy who is half-hearted and uneducated all day long, dreams of becoming a scholar in the fields">
-  <meta name="keywords" content="wusteam,thanhdieu,profile,wsteam">
-  <meta property="og:title" content="Profile VuongThanhDieu ~">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="vi-VN">
-  <meta property="og:image" content="./static/img/2.png">
-  <meta property="og:url" content="https://wusteam.com">
-  <meta property="og:description" content="A bad boy who is half-hearted and uneducated all day long, dreams of becoming a scholar in the fields">
-  <meta property="og:site_name" content="Wusteam">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="icon" href="i88.png">
   <style>
     /* =============== RESET & BASE =============== */
@@ -500,30 +489,6 @@
     }, 2000);
 
     var audio = document.getElementById("music");
-    // Tùy chỉnh auto-play nếu cần...
-
-    // ===== Tạo hiệu ứng hoa anh đào rơi =====
-    const cherryContainer = document.createElement('div');
-    cherryContainer.classList.add('cherry-container');
-    document.body.appendChild(cherryContainer);
-
-    const cherryCount = 30; // Số lượng hoa rơi
-    for (let i = 0; i < cherryCount; i++){
-      const cherry = document.createElement('div');
-      cherry.classList.add('cherry');
-      
-      // Vị trí ngang ngẫu nhiên
-      cherry.style.left = (Math.random() * 100) + '%';
-      // Thời gian animation ngẫu nhiên từ 5 đến 10 giây
-      cherry.style.animationDuration = (5 + Math.random() * 5) + 's';
-      // Độ trễ ngẫu nhiên từ 0 đến 5 giây
-      cherry.style.animationDelay = (Math.random() * 5) + 's';
-      // Kích thước ngẫu nhiên từ 20 đến 50px
-      const size = 20 + Math.random() * 30;
-      cherry.style.width = size + 'px';
-      cherry.style.height = size + 'px';
-      
-      cherryContainer.appendChild(cherry);
     }
   </script>
 </body>
